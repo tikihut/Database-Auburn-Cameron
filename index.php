@@ -155,18 +155,6 @@ if(isset($_POST['submit']))
 	$search_phrase = "show columns from ";
 	// get the table name of query result so that i can
 	// use it in data display
-	foreach ($fieldinfo as $val)
-	{
-    	//printf("Name: %s\n",$val->name);
-		$search_table =$val->table;
-    	//printf("max. Len: %d\n",$val->max_length);
-    }
-	//add in correct table to the column search
-	$search_phrase .=$search_table;
-	//Run query Show Solumns from table
-	//then find all fields of that table
-	//so that i can display correct rows
-	$results = mysqli_query($conn, $search_phrase);
 	if (mysqli_num_rows($results) > 0)
 	{
 		?>
@@ -180,8 +168,7 @@ if(isset($_POST['submit']))
 			//now with the needed rows
 			$result2 = mysqli_query($conn, $testStrip);
 			if (mysqli_num_rows($result2) > 0){
-				while($row = mysqli_fetch_assoc($result2))
-				{	
+					
 					//Ensure only rows with content
 					//are posted to site
 		//TODO: Make the format better
